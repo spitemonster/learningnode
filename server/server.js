@@ -22,6 +22,16 @@ app.post('/todos', (req, res) => {
   });
 });
 
+app.get('/todos', (req, res) => {
+  Todo.find().then((todos) => {
+    res.send(todos);
+  }, (err) => {
+    console.log(err);
+  });
+});
+
 app.listen(port, () => {
   console.log(`Listening on Port ${port}`);
 });
+
+module.exports = {app};
